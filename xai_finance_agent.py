@@ -1,4 +1,7 @@
-# import necessary python libraries
+# Adapted from the xai_finance_agent starter template in
+# https://github.com/Shubhamsaboo/awesome-llm-apps.
+# Modified for Indian stock market discovery and beginner investor research.
+
 from os import getenv
 
 from agno.agent import Agent
