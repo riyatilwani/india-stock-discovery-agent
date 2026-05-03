@@ -42,6 +42,8 @@ python xai_finance_agent.py
 
 5. Open your web browser and navigate to the URL provided in the console output to interact with the AI financial agent through the playground interface.
 
+Session history is stored locally in `tmp/agentos.db`. This file is ignored by Git so your local conversations are not pushed to GitHub.
+
 6. Connecting Your AgentOS
 
 To manage, monitor, and interact with your financial agent through the AgentOS Control Plane (from your browser), you need to connect your running AgentOS instance:

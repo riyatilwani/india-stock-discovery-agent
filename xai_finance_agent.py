@@ -5,6 +5,7 @@
 from os import getenv
 
 from agno.agent import Agent
+from agno.db.sqlite import SqliteDb
 from agno.models.xai import xAI
 from agno.tools.yfinance import YFinanceTools
 from agno.tools.duckduckgo import DuckDuckGoTools
@@ -21,6 +22,10 @@ def validate_environment():
         "Set it with: export XAI_API_KEY='your-api-key-here'\n"
         "If your key is set but you see a credits or spending-limit error, fix that in the xAI console."
     )
+
+
+# Setup local database for AgentOS sessions and agent history.
+db = SqliteDb(db_file="tmp/agentos.db")
 
 
 # create the AI finance agent
@@ -47,12 +52,14 @@ agent = Agent(
         "Always use tables to display financial or numerical data. For text data, use bullet points and small paragraphs.",
         "Be explicit about uncertainty, stale or missing data, and the difference between facts, estimates, and opinions.",
     ],
+    db=db,
+    add_history_to_context=True,
     debug_mode=True,
     markdown=True,
     )
 
 # UI for finance agent
-agent_os = AgentOS(agents=[agent])
+agent_os = AgentOS(agents=[agent], db=db)
 app = agent_os.get_app()
 
 if __name__ == "__main__":
