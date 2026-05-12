@@ -24,20 +24,20 @@ cd india-stock-discovery-agent
 2. Install the required dependencies:
 
 ```bash
-pip install -r requirements.txt
+make setup
 ```
 
 3. Get your xAI API key
 
 - Sign up for an [xAI API account](https://console.x.ai/)
-- Set your XAI_API_KEY environment variable.
+- Add your key to a local `.env` file.
 ```bash
-export XAI_API_KEY='your-api-key-here'
+echo "XAI_API_KEY=your-api-key-here" > .env
 ```
 
 4. Run the team of AI Agents
 ```bash
-python xai_finance_agent.py
+make run
 ```
 
 5. Open your web browser and navigate to the URL provided in the console output to interact with the AI financial agent through the playground interface.

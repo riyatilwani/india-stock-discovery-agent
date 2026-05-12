@@ -10,6 +10,10 @@ from agno.models.xai import xAI
 from agno.tools.yfinance import YFinanceTools
 from agno.tools.duckduckgo import DuckDuckGoTools
 from agno.os import AgentOS
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 def validate_environment():
