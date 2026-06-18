@@ -1,59 +1,68 @@
 # India Stock Discovery Agent
 
-An AI-powered research assistant for discovering Indian stocks worth investigating, using Agno, xAI Grok, Yahoo Finance, and web search.
+A trust-first Indian equity research app for building an investor profile, applying suitability guardrails, discovering stocks to research, and journaling decisions before money moves.
 
 This project is adapted from the `xai_finance_agent` starter template in [Shubham Saboo's awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps) repository.
 
-### Features
+## What It Does
 
-- Focused on Indian listed companies, especially NSE tickers such as `RELIANCE.NS` and `TCS.NS`
-- Powered by xAI's Grok-4 Fast model through Agno
-- Real-time stock data analysis via YFinance
-- Web search capabilities through DuckDuckGo
-- Beginner-friendly research output with catalysts, risks, and next learning steps
-- Interactive AgentOS playground interface
+- Captures an investor profile: goals, horizon, risk tolerance, emergency fund, income stability, and drawdown comfort
+- Generates native Python investment guardrails instead of relying on LLM prompts for risk control
+- Shows Indian stock research candidates with suitability labels
+- Saves a local decision journal for watchlist/skipped/bought ideas
+- Uses a custom FastAPI backend and Vite React frontend
 
-### How to get Started?
+The app is a research and learning assistant. It does not provide buy/sell recommendations.
 
-1. Clone the GitHub repository
-```bash
-git clone git@github.com:riyatilwani/india-stock-discovery-agent.git
-cd india-stock-discovery-agent
-```
+## Run Locally
 
-2. Install the required dependencies:
+Install dependencies:
 
 ```bash
 make setup
 ```
 
-3. Get your xAI API key
+Start the backend:
 
-- Sign up for an [xAI API account](https://console.x.ai/)
-- Add your key to a local `.env` file.
+```bash
+make api
+```
+
+In another terminal, start the web app:
+
+```bash
+make web
+```
+
+Open:
+
+```text
+http://localhost:3000
+```
+
+The API runs at:
+
+```text
+http://localhost:8000
+```
+
+Local app data is stored in `data/app.db`. This file is ignored by Git.
+
+## Legacy Agno Agent
+
+The original Agno-based agent is still available while the custom app evolves:
+
+```bash
+make legacy-agent
+```
+
+For the legacy agent, add your xAI key to `.env`:
+
 ```bash
 echo "XAI_API_KEY=your-api-key-here" > .env
 ```
 
-4. Run the team of AI Agents
-```bash
-make run
-```
-
-5. Open your web browser and navigate to the URL provided in the console output to interact with the AI financial agent through the playground interface.
-
-Session history is stored locally in `tmp/agentos.db`. This file is ignored by Git so your local conversations are not pushed to GitHub.
-
-6. Connecting Your AgentOS
-
-To manage, monitor, and interact with your financial agent through the AgentOS Control Plane (from your browser), you need to connect your running AgentOS instance:
-
-**Step-by-step guide:**
-
-- Visit the official documentation: [Connecting Your OS](https://docs.agno.com/agent-os/connecting-your-os)
-- Follow the steps in the guide to register your local AgentOS and establish the connection.
-
-### Attribution and License
+## Attribution and License
 
 This repository is a modified derivative of the `xai_finance_agent` starter app from [Shubhamsaboo/awesome-llm-apps](https://github.com/Shubhamsaboo/awesome-llm-apps).
 
